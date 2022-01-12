@@ -16,7 +16,7 @@ function App() {
   db.open().catch((err) => {console.log(err.stack || err)})
 
  // state variables
-  
+   const  [postFile, setFile] = useState("");
 
 
   // reading and decoding  the file using FileReader javascript object
@@ -26,7 +26,8 @@ function App() {
     let reader = new FileReader();
     reader.readAsDataURL(e[0]);
     reader.onload = (e) => {
-      console.log(reader.result);
+    setFile(reader.result);
+      
     }
   }
 
