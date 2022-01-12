@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Dexie from 'dexie';
 function App() {
+
+    // create an instance of dexie
+  const db = new Dexie("audioDB");
+
+  // create the database store
+  db.version(1).stores({
+    songs : "song"
+  })
+  
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+       <h1>Audio Player</h1>
+
+       <input type="file" />
+
+
+
     </div>
   );
 }
