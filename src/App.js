@@ -2,21 +2,31 @@
 import './App.css';
 import Dexie from 'dexie';
 import {useState} from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
 
-function App() {
-
-    // create an instance of dexie
+// create an instance of dexie
   const db = new Dexie("audioDB");
 
   // create the database store
   db.version(1).stores({
-    songs : "song"
+    songs : "++id,song"         // Primary key and indexed props
   })
-  // error handling
-  db.open().catch((err) => {console.log(err.stack || err)})
+  
 
- // state variables
-   const  [postFile, setFile] = useState("");
+function App() {
+ 
+  // state variables
+    const  [postFile, setFile] = useState("");
+    
+    
+    
+
+   const allData = useLiveQuery(() => db.songs.toArray(), []);
+   if (!allData) return null;
+
+   
+   
+   
 
 
   // reading and decoding  the file using FileReader javascript object
@@ -27,11 +37,33 @@ function App() {
     reader.readAsDataURL(e[0]);
     reader.onload = (e) => {
     setFile(reader.result);
-      
-    }
+    
+     }
   }
 
-  
+    //this function is triggered when Post Song button is clicked
+    
+  async function postSonginfo () {
+    
+        //storing result in a data object 
+     if(postFile!== "") {
+       let data = {
+         song : postFile
+       } 
+      //data object is now added to dexie database
+     await db.songs.add(data)
+      
+     } 
+
+   }
+   const player = allData.map(({id,song}) =>(
+
+    <div key={id} className="player">
+      <audio src={song} controls/>
+    </div>
+
+   ))
+
 
   return (
     <div className="App">
@@ -39,10 +71,22 @@ function App() {
        <h1>Audio Player</h1>
 
        <input type="file" name='file' onChange={e => getfile(e.target.files)}/>
-
-
-
-    </div>
+        
+  
+      <div className="btn-wrapper">
+        <button onClick={postSonginfo} >Post Song </button>   
+      </div>
+      
+     
+      {
+        allData.length > 0 && 
+        <div className="players">
+          {player}
+        </div>
+      }
+      
+      
+        </div>
   );
 }
 
