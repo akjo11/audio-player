@@ -17,17 +17,14 @@ function App() {
  
   // state variables
     const  [postFile, setFile] = useState("");
-    
-    
-    
 
+    
+    //using useLiverQuery hook to watch for changes in our IndexeddDB database
+    //and re-render component whenever the database is updated.
    const allData = useLiveQuery(() => db.songs.toArray(), []);
    if (!allData) return null;
 
    
-   
-   
-
 
   // reading and decoding  the file using FileReader javascript object
 
@@ -42,7 +39,7 @@ function App() {
   }
 
     //this function is triggered when Post Song button is clicked
-    
+
   async function postSonginfo () {
     
         //storing result in a data object 
@@ -56,6 +53,10 @@ function App() {
      } 
 
    }
+  
+  
+
+   //creating audio players
    const player = allData.map(({id,song}) =>(
 
     <div key={id} className="player">
@@ -65,19 +66,22 @@ function App() {
    ))
 
 
+
+
   return (
     <div className="App">
 
-       <h1>Audio Player</h1>
+            {/* title */}
+       <h1 className='title'>Audio Player</h1>
 
-       <input type="file" name='file' onChange={e => getfile(e.target.files)}/>
-        
-  
-      <div className="btn-wrapper">
-        <button onClick={postSonginfo} >Post Song </button>   
-      </div>
+       {/* input */}
+       <div className="file-input">
+         <input  type="file" id='file' className='file' onChange={e => getfile(e.target.files)}/>
+        <label htmlFor="file">Select file</label>
+       </div>
       
-     
+        <button onClick={postSonginfo} className='post-song' > Post Song </button> 
+    
       {
         allData.length > 0 && 
         <div className="players">

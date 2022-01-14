@@ -1,3 +1,72 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+
 .App {
-  text-align: center;
+     align-items: center;
+    text-align: center;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    
+     font-size: 1.5rem;
+    
+}
+.title {
+    color: #30fbef;
+}
+.player {
+  margin-top: 2rem;
+  
+}
+.players {
+    display: flex;
+     flex-direction: column;
+    justify-content: flex-start;
+    background: radial-gradient(38.2% 50% at 50% 50%, #2E3134 0%, #292B2E 100%);
+    border: 2px solid #272829;
+    box-shadow: inset 2px 2px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    margin-left: 25rem;
+    margin-bottom: 3rem;
+    margin-top: 4rem;
+    width: 40%;
+    height: min-content;
+    padding-left: 4rem;
+    padding: 4rem;
+    color: white;
+}
+
+.post-song {
+   background: #282828;
+    
+   border: none;
+    border-radius: 50px;
+    font-size: large; 
+    color: #30fbef;
+    margin-top: 2rem;
+    width: 210px;
+    height: 60px;
+}
+.post-song :hover {
+  transform: scale(1.1);
+}
+
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+.file-input label {
+  background: #282828;
+   border: none;
+   padding: 1rem;
+    border-radius: 10px;
+    font-size: large; 
+    color: #30fbef;
+    
+    
+    
 }
