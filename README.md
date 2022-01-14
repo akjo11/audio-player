@@ -17,3 +17,5 @@
    
  • player  : maps over an array of objects (allData) to create an audio player for each object.
  
+
+![68a68488-02df-4704-a16d-79c8ba61cfb5](https://user-images.githubusercontent.com/56825541/149437053-04c14cd7-224f-4464-b7f1-3cce02c6ed31.jpg)
