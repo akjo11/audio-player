@@ -77,10 +77,10 @@ function App() {
        {/* input */}
        <div className="file-input">
          <input  type="file" id='file' className='file' onChange={e => getfile(e.target.files)}/>
-        <label htmlFor="file">Select file</label>
+        <label htmlFor="file">Upload</label>
        </div>
       
-        <button onClick={postSonginfo} className='post-song' > Post Song </button> 
+        <button onClick={postSonginfo} className='post-song' > Submit </button> 
     
       {
         allData.length > 0 && 
