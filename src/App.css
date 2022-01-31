@@ -14,8 +14,10 @@ body {
     
 }
 .title {
-    color: #30fbef;
-    
+    color: #30fbef;   
+}
+.sub-title {
+  color: #30fbef; 
 }
 .player {
   margin-top: 2rem;

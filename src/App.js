@@ -73,7 +73,7 @@ function App() {
 
             {/* title */}
        <h1 className='title'>Audio Player</h1>
-
+        <h5 className='sub-title'>Upload your audio files </h5>
        {/* input */}
        <div className="file-input">
          <input  type="file" id='file' className='file' onChange={e => getfile(e.target.files)}/>
